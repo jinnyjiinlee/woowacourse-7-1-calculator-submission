@@ -1,8 +1,8 @@
 import { ERROR_MESSAGES } from '../Constant/errorMessages.js';
 
 export class ValidationHandler {
-  checkValidation(Numbers) {
-    this.Numbers = [...Numbers];
+  checkValidation(inputString) {
+    this.inputString = [...inputString];
 
     this.specifyCaseValue();
     this.checkBasicError();
@@ -10,49 +10,54 @@ export class ValidationHandler {
   }
 
   specifyCaseValue() {
-    this.normalCase = this.Numbers[1] === ',' || this.Numbers[1] === ':';
-    this.customCase =
-      this.Numbers[0] === '/' &&
-      this.Numbers[1] === '/' &&
-      this.Numbers[3] === '\\' &&
-      this.Numbers[4] === 'n';
+    this.NORMAL_CASE_CHECK =
+      this.inputString[1] === ',' || this.inputString[1] === ':';
+    this.CUSTOM_CASE_CHECK =
+      this.inputString[0] === '/' &&
+      this.inputString[1] === '/' &&
+      this.inputString[3] === '\\' &&
+      this.inputString[4] === 'n';
   }
 
   checkBasicError() {
-    if (!(this.normalCase || this.customCase)) {
+    if (!(this.NORMAL_CASE_CHECK || this.CUSTOM_CASE_CHECK)) {
       throw new Error(ERROR_MESSAGES.WRONG_INPUT);
     }
   }
 
   checkNormalOrCustom = () => {
-    if (this.normalCase) {
+    if (this.NORMAL_CASE_CHECK) {
       this.validateNormalCase();
     }
 
-    if (this.customCase) {
+    if (this.CUSTOM_CASE_CHECK) {
       this.validateCustomCase();
     }
   };
 
+  // eslint-disable-next-line max-lines-per-function
   validateNormalCase() {
-    const evenNumberArray = [];
-    for (let i = 0; i < this.Numbers.length; i += 2) {
-      evenNumberArray.push(this.Numbers[i]);
+    // TODO: 리펙토링 - forEach를 사용해서 짝수 인덱스만 돌게하는 것 찾기
+    const onlyNumberInArray = [];
+    for (let i = 0; i < this.inputString.length; i += 2) {
+      onlyNumberInArray.push(this.inputString[i]);
     }
-    evenNumberArray.forEach((number) => {
-      if (isNaN(Number(number))) {
+
+    onlyNumberInArray.forEach((number) => {
+      if (Number.isNaN(Number(number))) {
         throw new Error(ERROR_MESSAGES.WRONG_NORMAL_INPUT);
       }
     });
   }
 
+  // eslint-disable-next-line max-lines-per-function
   validateCustomCase() {
-    const evenNumberArray = [];
-    for (let i = 5; i < this.Numbers.length; i += 2) {
-      evenNumberArray.push(this.Numbers[i]);
+    const onlyNumberInArray = [];
+    for (let i = 5; i < this.inputString.length; i += 2) {
+      onlyNumberInArray.push(this.inputString[i]);
     }
 
-    evenNumberArray.forEach((number) => {
+    onlyNumberInArray.forEach((number) => {
       if (Number.isNaN(Number(number))) {
         throw new Error(ERROR_MESSAGES.WRONG_CUSTOM_INPUT);
       }
