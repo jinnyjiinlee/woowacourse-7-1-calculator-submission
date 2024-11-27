@@ -15,7 +15,7 @@ export class MainController {
     const stringToAdd = await this.input.getStringToAddInput();
     new ValidationHandler().checkValidation(stringToAdd);
 
-    const parsedNumbers = new NumbersParserHandler().validation(stringToAdd);
+    const parsedNumbers = new NumbersParserHandler().parseNumbers(stringToAdd);
     const resultAddedNumbers = addNumbers(parsedNumbers);
 
     this.output.printResultOfSum(resultAddedNumbers);

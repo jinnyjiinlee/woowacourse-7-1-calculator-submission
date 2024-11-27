@@ -1,5 +1,5 @@
 export class NumbersParserHandler {
-  validation(inputString) {
+  parseNumbers(inputString) {
     this.inputString = inputString;
     this.specifyCaseValue();
 
