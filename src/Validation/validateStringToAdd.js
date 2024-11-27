@@ -1,3 +1,4 @@
+import { DELIMITER, DELIMITER_MAKER } from '../Constant/constant.js';
 import { ERROR_MESSAGES } from '../Constant/errorMessages.js';
 
 export class ValidationHandler {
@@ -11,13 +12,14 @@ export class ValidationHandler {
 
   specifyCaseValue() {
     this.NORMAL_CASE_CHECK =
-      this.inputString[1] === ',' || this.inputString[1] === ':';
+      this.inputString[1] === DELIMITER.COMMA ||
+      this.inputString[1] === DELIMITER.COLON;
 
     this.CUSTOM_CASE_CHECK =
-      this.inputString[0] === '/' &&
-      this.inputString[1] === '/' &&
-      this.inputString[3] === '\\' &&
-      this.inputString[4] === 'n';
+      this.inputString[0] === DELIMITER_MAKER.STRING_FIRST &&
+      this.inputString[1] === DELIMITER_MAKER.STRING_SECOND &&
+      this.inputString[3] === DELIMITER_MAKER.STRING_THIRD &&
+      this.inputString[4] === DELIMITER_MAKER.STRING_FOURTH;
   }
 
   checkBasicError() {
