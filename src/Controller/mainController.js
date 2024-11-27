@@ -3,6 +3,7 @@ import { OutputHandler } from '../View/outputView.js';
 
 import { checkNormalOrCustom } from '../Utils/numbersParser.js';
 import { addNumbers } from '../Utils/calculatorToAdd.js';
+import { ValidationHandler } from '../Validation/validateStringToAdd.js';
 
 export class MainController {
   constructor() {
@@ -12,6 +13,8 @@ export class MainController {
 
   async startProgram() {
     const stringToAdd = await this.input.getStringToAddInput();
+    new ValidationHandler().checkValidation(stringToAdd);
+
     const parsedNumbers = checkNormalOrCustom(stringToAdd);
     const resultAddedNumbers = addNumbers(parsedNumbers);
 
