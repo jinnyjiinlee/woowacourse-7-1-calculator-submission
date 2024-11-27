@@ -2,10 +2,11 @@ export class NumbersParserHandler {
   validation(inputString) {
     this.inputString = inputString;
     this.specifyCaseValue();
+
     if (this.NORMAL_CASE_CHECK) {
       return this.parseNumbersForNormal();
     }
-    
+
     if (this.CUSTOM_CASE_CHECK) {
       return this.parseNumbersForCustom();
     }
@@ -14,6 +15,7 @@ export class NumbersParserHandler {
   specifyCaseValue() {
     this.NORMAL_CASE_CHECK =
       this.inputString[1] === ',' || this.inputString[1] === ':';
+
     this.CUSTOM_CASE_CHECK =
       this.inputString[0] === '/' &&
       this.inputString[1] === '/' &&

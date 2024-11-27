@@ -12,6 +12,7 @@ export class ValidationHandler {
   specifyCaseValue() {
     this.NORMAL_CASE_CHECK =
       this.inputString[1] === ',' || this.inputString[1] === ':';
+
     this.CUSTOM_CASE_CHECK =
       this.inputString[0] === '/' &&
       this.inputString[1] === '/' &&
@@ -35,9 +36,8 @@ export class ValidationHandler {
     }
   };
 
-  // eslint-disable-next-line max-lines-per-function
+  // TODO: 리펙토링 - forEach를 사용해서 짝수 인덱스만 돌게하는 것 찾기
   validateNormalCase() {
-    // TODO: 리펙토링 - forEach를 사용해서 짝수 인덱스만 돌게하는 것 찾기
     const onlyNumberInArray = [];
     for (let i = 0; i < this.inputString.length; i += 2) {
       onlyNumberInArray.push(this.inputString[i]);
@@ -50,7 +50,6 @@ export class ValidationHandler {
     });
   }
 
-  // eslint-disable-next-line max-lines-per-function
   validateCustomCase() {
     const onlyNumberInArray = [];
     for (let i = 5; i < this.inputString.length; i += 2) {

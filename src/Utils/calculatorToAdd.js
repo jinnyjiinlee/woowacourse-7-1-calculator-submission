@@ -1,7 +1,7 @@
 export const addNumbers = (parsedNumbers) => {
   let sum = 0;
-  parsedNumbers.forEach((num) => {
-    sum += num;
+  parsedNumbers.forEach((number) => {
+    sum += number;
   });
 
   return sum;
