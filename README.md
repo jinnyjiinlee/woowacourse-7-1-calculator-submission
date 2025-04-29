@@ -3,6 +3,7 @@
 > 입력한 문자열에서 숫자를 추출하여 더하는 계산기 구현
 
 ## 프로젝트 구조
+```
 src  
 ├── Controller  
 │   ├── isCommaSemicolonCondition.js  
@@ -15,7 +16,8 @@ src
 │   ├── printErrorMessageForInputError.js  
 │   ├── printErrorMessageForTypo.js  
 │   └── printUserOutput.js  
-└── App.js  
+└── App.js
+```  
 
 ### 파일 설명
 1. Controller
